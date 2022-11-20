@@ -6,8 +6,8 @@ import org.springframework.boot.autoconfigure.SpringBootApplication;
 @SpringBootApplication
 public class SpringAthenaeumApplication {
 
-	public static void main(String[] args) {
-		SpringApplication.run(SpringAthenaeumApplication.class, args);
-	}
+    public static void main(String[] args) {
+        SpringApplication.run(SpringAthenaeumApplication.class, args);
+    }
 
 }
