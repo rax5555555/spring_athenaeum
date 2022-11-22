@@ -8,8 +8,26 @@
     <title>Show person</title>
 </head>
 <body>
-<h3>Name - ${persons.name}</h3>
+<h3>Name - ${persons.name}, Age - ${persons.age}</h3>
+
 <br>
+<hr/>
+
+<form method="post" action="/people/${persons.id}/update">
+    <label for="name">Enter name: </label>
+    <input name="name" placeholder="${persons.name}">
+    <br/>
+    <label for="age">Enter age: </label>
+    <input name="age" placeholder="${persons.age}">
+    <br/>
+    <input type="submit" value="Save"/>
+</form>
+
+<br>
+
+<form method="post" action="/people/${persons.id}/delete">
+    <input type="submit" value="Удалить">
+</form>
 
 </body>
 </html>

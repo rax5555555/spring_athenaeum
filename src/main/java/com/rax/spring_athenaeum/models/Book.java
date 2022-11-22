@@ -2,13 +2,19 @@ package com.rax.spring_athenaeum.models;
 
 import lombok.Data;
 
+import javax.persistence.GeneratedValue;
+import javax.persistence.GenerationType;
+import javax.persistence.Id;
 import javax.validation.constraints.Min;
 import javax.validation.constraints.NotEmpty;
 import javax.validation.constraints.Size;
 
 @Data
 public class Book {
-    private int id;
+
+    @Id
+    @GeneratedValue(strategy = GenerationType.SEQUENCE)
+    private Long id;
 
     @NotEmpty(message = "Name should not be empty")
     @Size(min = 2, max = 50, message = "Name should be between 2 and 30 characters")
@@ -23,7 +29,7 @@ public class Book {
     public Book() {
     }
 
-    public Book(int id, String name, String author, int year) {
+    public Book(Long id, String name, String author, int year) {
         this.id = id;
         this.name = name;
         this.author = author;

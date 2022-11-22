@@ -1,6 +1,5 @@
 package com.rax.spring_athenaeum.services;
 
-import com.rax.spring_athenaeum.form.PersonForm;
 import com.rax.spring_athenaeum.models.Person;
 import com.rax.spring_athenaeum.repositories.PersonRepository;
 import org.springframework.beans.factory.annotation.Autowired;
@@ -24,8 +23,8 @@ public class PersonServiceImpl implements PersonService{
     }
 
     @Override
-    public Person getPerson(Long productId) {
-        return personRepository.getById(productId);
+    public Person getPerson(Long personId) {
+        return personRepository.getById(personId);
     }
 
     @Override
@@ -36,6 +35,19 @@ public class PersonServiceImpl implements PersonService{
                 .build();
 
         personRepository.save(newPerson);
+    }
+
+    @Override
+    public void deleteUser(Long personId) {
+        personRepository.deleteById(personId);
+    }
+
+    @Override
+    public void updateUser(Long userId, Person person) {
+        Person updatePerson = personRepository.getById(userId);
+        updatePerson.setName(person.getName());
+        updatePerson.setAge(person.getAge());
+        personRepository.save(updatePerson);
     }
 
     /*public void save(Person person) {

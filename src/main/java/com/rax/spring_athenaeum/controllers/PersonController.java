@@ -42,8 +42,26 @@ public class PersonController {
     }
 
     @PostMapping()
-    public String create(@ModelAttribute("person") Person person) {
+    public String create(@ModelAttribute("person") @Valid Person person,
+                         BindingResult bindingResult) {
+
+        if (bindingResult.hasErrors())
+            return "new";
+
         personService.addPerson(person);
+        return "redirect:/people";
+    }
+
+    @PostMapping("/{id}/delete")
+    public String deleteUser(@PathVariable("id") Long id) {
+        personService.deleteUser(id);
+        return "redirect:/people";
+    }
+
+    @PostMapping("/{id}/update")
+    public String update(@PathVariable("id") Long id, Person person) {
+        System.out.println("Update!");
+        personService.updateUser(id, person);
         return "redirect:/people";
     }
 
