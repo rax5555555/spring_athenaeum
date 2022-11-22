@@ -1,5 +1,6 @@
 package com.rax.spring_athenaeum.services;
 
+import com.rax.spring_athenaeum.form.PersonForm;
 import com.rax.spring_athenaeum.models.Person;
 import com.rax.spring_athenaeum.repositories.PersonRepository;
 import org.springframework.beans.factory.annotation.Autowired;
@@ -17,16 +18,27 @@ public class PersonServiceImpl implements PersonService{
         this.personRepository = personRepository;
     }
 
+    @Override
     public List<Person> getAllUsers() {
         return personRepository.findAll();
     }
 
-    /*public Person show(int id) {
-        return jdbcTemplate.query("SELECT * FROM Person WHERE id=?", new Object[]{id}, new BeanPropertyRowMapper<>(Person.class))
-                .stream().findAny().orElse(null);
+    @Override
+    public Person getPerson(Long productId) {
+        return personRepository.getById(productId);
     }
 
-    public void save(Person person) {
+    @Override
+    public void addPerson(Person person) {
+        Person newPerson = Person.builder()
+                .name(person.getName())
+                .age(person.getAge())
+                .build();
+
+        personRepository.save(newPerson);
+    }
+
+    /*public void save(Person person) {
         jdbcTemplate.update("INSERT INTO Person VALUES(1, ?, ?)", person.getName(), person.getAge());
     }
 
