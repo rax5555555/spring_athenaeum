@@ -1,0 +1,19 @@
+<!DOCTYPE html>
+<html lang="en" xmlns:th="http://www.thymeleaf.org">
+<head>
+    <meta charset="UTF-8">
+    <title>Index</title>
+</head>
+<body>
+
+<div th:each="persons : ${people}">
+    <a th:text="${persons.getName() + ', ' + persons.getAge()}">user</a>
+</div>
+
+<br/>
+<hr/>
+
+<a href="/people/new">Create new person</a>
+
+</body>
+</html>
