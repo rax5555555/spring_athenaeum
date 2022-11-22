@@ -1,30 +1,28 @@
 package com.rax.spring_athenaeum.services;
 
 import com.rax.spring_athenaeum.models.Person;
+import com.rax.spring_athenaeum.repositories.BookRepository;
 import com.rax.spring_athenaeum.repositories.PersonRepository;
 import org.springframework.beans.factory.annotation.Autowired;
-import org.springframework.stereotype.Component;
 
 import java.util.List;
 
-@Component
-public class PersonServiceImpl implements PersonService{
-
-    private final PersonRepository personRepository;
+public class BookServiceImpl{
+    private final BookRepository bookRepository;
 
     @Autowired
-    public PersonServiceImpl(PersonRepository personRepository) {
-        this.personRepository = personRepository;
+    public BookServiceImpl(BookRepository bookRepository) {
+        this.bookRepository = bookRepository;
     }
 
-    @Override
+    /*@Override
     public List<Person> getAllUsers() {
-        return personRepository.findAll();
+        return PersonRepository.findAll();
     }
 
     @Override
     public Person getPerson(Long PersonId) {
-        return personRepository.getById(PersonId);
+        return PersonRepository.getById(PersonId);
     }
 
     @Override
@@ -34,19 +32,19 @@ public class PersonServiceImpl implements PersonService{
                 .age(Person.getAge())
                 .build();
 
-        personRepository.save(newPerson);
+        PersonRepository.save(newPerson);
     }
 
     @Override
     public void deleteUser(Long PersonId) {
-        personRepository.deleteById(PersonId);
+        PersonRepository.deleteById(PersonId);
     }
 
     @Override
     public void updateUser(Long userId, Person Person) {
-        Person updatePerson = personRepository.getById(userId);
+        Person updatePerson = PersonRepository.getById(userId);
         updatePerson.setName(Person.getName());
         updatePerson.setAge(Person.getAge());
-        personRepository.save(updatePerson);
-    }
+        PersonRepository.save(updatePerson);
+    }*/
 }

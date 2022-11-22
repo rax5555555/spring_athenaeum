@@ -9,5 +9,5 @@ public interface PersonService {
     Person getPerson(Long personId);
     void addPerson(Person person);
     void deleteUser(Long personId);
-    void updateUser(Long personId, Person person);
+    void updateUser(Long BookId, Person person);
 }

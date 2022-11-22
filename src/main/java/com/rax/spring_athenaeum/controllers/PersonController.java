@@ -24,31 +24,31 @@ public class PersonController {
 
     @GetMapping()
     public String getPersonPage(Model model) {
-        List<Person> persons = personService.getAllUsers();
-        model.addAttribute("persons", persons);
+        List<Person> Persons = personService.getAllUsers();
+        model.addAttribute("Persons", Persons);
         return "people";
     }
 
     @GetMapping("/{id}")
     public String getUserPage(Model model, @PathVariable("id") Long id) {
-        Person persons = personService.getPerson(id);
-        model.addAttribute("persons", persons);
+        Person Persons = personService.getPerson(id);
+        model.addAttribute("Persons", Persons);
         return "show";
     }
 
     @GetMapping("/new")
-    public String newPerson(@ModelAttribute("person") Person person) {
+    public String newPerson(@ModelAttribute("Person") Person Person) {
         return "new";
     }
 
     @PostMapping()
-    public String create(@ModelAttribute("person") @Valid Person person,
+    public String create(@ModelAttribute("Person") @Valid Person Person,
                          BindingResult bindingResult) {
 
         if (bindingResult.hasErrors())
             return "new";
 
-        personService.addPerson(person);
+        personService.addPerson(Person);
         return "redirect:/people";
     }
 
@@ -59,46 +59,9 @@ public class PersonController {
     }
 
     @PostMapping("/{id}/update")
-    public String update(@PathVariable("id") Long id, Person person) {
+    public String update(@PathVariable("id") Long id, Person Person) {
         System.out.println("Update!");
-        personService.updateUser(id, person);
+        personService.updateUser(id, Person);
         return "redirect:/people";
     }
-
-    /*@GetMapping("/new")
-    public String newPerson(@ModelAttribute("person") Person person) {
-        return "people/new";
-    }
-
-    @PostMapping()
-    public String create(@ModelAttribute("person") @Valid Person person,
-                         BindingResult bindingResult) {
-        if (bindingResult.hasErrors())
-            return "people/new";
-
-        personDAO.save(person);
-        return "redirect:/people";
-    }
-
-    @GetMapping("/{id}/edit")
-    public String edit(Model model, @PathVariable("id") int id) {
-        model.addAttribute("person", personDAO.show(id));
-        return "people/edit";
-    }
-
-    @PatchMapping("/{id}")
-    public String update(@ModelAttribute("person") @Valid Person person, BindingResult bindingResult,
-                         @PathVariable("id") int id) {
-        if (bindingResult.hasErrors())
-            return "people/edit";
-
-        personDAO.update(id, person);
-        return "redirect:/people";
-    }
-
-    @DeleteMapping("/{id}")
-    public String delete(@PathVariable("id") int id) {
-        personDAO.delete(id);
-        return "redirect:/people";
-    }*/
 }

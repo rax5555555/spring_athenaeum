@@ -8,7 +8,7 @@
 
 
 
-<#list persons as people>
+<#list Persons as people>
     <tr>
         <a href="/people/${people.id}">
             <td>${people.id}</td>
@@ -24,7 +24,7 @@
 <br/>
 <hr/>
 
-<a href="/people/new">Create new person</a>
+<a href="/people/new">Create new Person</a>
 
 </body>
 </html>
