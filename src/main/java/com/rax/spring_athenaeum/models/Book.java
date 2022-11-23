@@ -1,7 +1,11 @@
 package com.rax.spring_athenaeum.models;
 
+import lombok.AllArgsConstructor;
+import lombok.Builder;
 import lombok.Data;
+import lombok.NoArgsConstructor;
 
+import javax.persistence.Entity;
 import javax.persistence.GeneratedValue;
 import javax.persistence.GenerationType;
 import javax.persistence.Id;
@@ -10,6 +14,10 @@ import javax.validation.constraints.NotEmpty;
 import javax.validation.constraints.Size;
 
 @Data
+@AllArgsConstructor
+@NoArgsConstructor
+@Builder
+@Entity
 public class Book {
 
     @Id
@@ -26,13 +34,4 @@ public class Book {
     @Min(value = 0, message = "Age should be greater than 0")
     private int year;
 
-    public Book() {
-    }
-
-    public Book(Long id, String name, String author, int year) {
-        this.id = id;
-        this.name = name;
-        this.author = author;
-        this.year = year;
-    }
 }

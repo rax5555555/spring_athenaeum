@@ -1,13 +1,14 @@
 package com.rax.spring_athenaeum.services;
 
-import com.rax.spring_athenaeum.models.Person;
+import com.rax.spring_athenaeum.models.Book;
 import com.rax.spring_athenaeum.repositories.BookRepository;
-import com.rax.spring_athenaeum.repositories.PersonRepository;
 import org.springframework.beans.factory.annotation.Autowired;
+import org.springframework.stereotype.Component;
 
 import java.util.List;
 
-public class BookServiceImpl{
+@Component
+public class BookServiceImpl implements BookServise{
     private final BookRepository bookRepository;
 
     @Autowired
@@ -15,36 +16,39 @@ public class BookServiceImpl{
         this.bookRepository = bookRepository;
     }
 
-    /*@Override
-    public List<Person> getAllUsers() {
-        return PersonRepository.findAll();
+    @Override
+    public List<Book> getAllBooks() {
+        return bookRepository.findAll();
     }
 
     @Override
-    public Person getPerson(Long PersonId) {
-        return PersonRepository.getById(PersonId);
+    public Book getBook(Long bookId) {
+        return bookRepository.getById(bookId);
     }
 
     @Override
-    public void addPerson(Person Person) {
-        Person newPerson = Person.builder()
-                .name(Person.getName())
-                .age(Person.getAge())
+    public void addBook(Book book) {
+        Book newBook = Book.builder()
+                .name(book.getName())
+                .author(book.getAuthor())
+                .year(book.getYear())
                 .build();
 
-        PersonRepository.save(newPerson);
+        bookRepository.save(newBook);
     }
 
     @Override
-    public void deleteUser(Long PersonId) {
-        PersonRepository.deleteById(PersonId);
+    public void deleteBook(Long bookId) {
+        bookRepository.deleteById(bookId);
     }
 
     @Override
-    public void updateUser(Long userId, Person Person) {
-        Person updatePerson = PersonRepository.getById(userId);
-        updatePerson.setName(Person.getName());
-        updatePerson.setAge(Person.getAge());
-        PersonRepository.save(updatePerson);
-    }*/
+    public void updateBook(Long bookId, Book book) {
+        Book updateBook = bookRepository.getById(bookId);
+        updateBook.setName(book.getName());
+        updateBook.setAuthor(book.getAuthor());
+        updateBook.setYear(book.getYear());
+        bookRepository.save(updateBook);
+    }
+
 }
